@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenWest</title>
+
+    <!-- Bootstrap -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
+
+    <script src="javascripts/modernizr.custom.js"></script>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="page-header">
+            <h1 id="type">General I/O</h1>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-lg-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Overview</h3>
+            </div>
+            <div class="panel-body">
+              <p>The general I/O pins allow you to configure a pin as an input or output. As an output the pin can be set high (3.3V) or low (Ground) to control a variety of external components. As an input the pin can be queried in software to determine if it is high or low.</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Uses</h3>
+            </div>
+            <div class="panel-body">
+              <div class="list-group">
+                <a href="#" class="list-group-item">LEDs and Lights</a>
+                <a href="#" class="list-group-item">Motors</a>
+                <a href="#" class="list-group-item">Switches and Buttons</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h2 class="panel-title">Examples</h2>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">LED<span class="badge pull-right">Output</span></div>
+                    <div class="switch demo1">
+                      <input type="checkbox" id='led-switch'>
+                      <label></label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">AC Switching<span class="badge pull-right">Output</span></div>
+                    <div class="panel-body">
+                      <div class="switch demo2" id="relay-1">
+                        <input type="checkbox">
+                        <label></label>
+                      </div>
+                      <div class="switch demo2" id="relay-2">
+                        <input type="checkbox">
+                        <label></label>
+                      </div>
+                      <div class="switch demo2" id="relay-3">
+                        <input type="checkbox">
+                        <label></label>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">Switch<span class="badge pull-right">Input</span></div>
+                    <div class="panel-body center-block">
+                      <div class="switch demo3">
+                        <input id="switchState" type="checkbox">
+                        <label><i></i></label>
+                      </div> 
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">Button<span class="badge pull-right">Input</span></div>
+                    <div class="panel-body center-block">
+                    <h4 style="text-align:center">Presses</h4>
+                      <h1 style="text-align:center"><span id="pressCount" class="label label-success">0</span></h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 
+      ========================================================================
+      ========================================================================
+
+      SPI SECTION
+
+      ========================================================================
+      ======================================================================== 
+      -->
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="page-header">
+            <h1 id="type">SPI <small>Serial Peripheral Interface</small></h1>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-lg-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Overview</h3>
+            </div>
+            <div class="panel-body">
+              <p>SPI is a standard communication protocol used for device communication in embedded systems. It's based on a master/slave relationship where the master initiates and controls the transfer of data. The Raspberry Pi always acts as the master device and can talk to slave devices such as sensors and displays.</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Uses</h3>
+            </div>
+            <div class="panel-body">
+              <div class="list-group">
+                <a href="#" class="list-group-item">Displays</a>
+                <a href="#" class="list-group-item">Sensors</a>
+                <a href="#" class="list-group-item">Microcontrollers</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h2 class="panel-title">Example</h2>
+            </div>
+            <div class="panel-body" style="background-color:#101010;">
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="wrapper">
+                    <div id="output">
+                      <div id="container1"><canvas id="c"></canvas></div>
+                    </div>
+                    <form id="spi-display-form">
+                      <input id="textInput" type="text" value="" />
+                      <button id="spi-submit" type="submit" class="btn btn-default btn-sm">Update</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 
+      ========================================================================
+      ========================================================================
+
+      I²C SECTION
+
+      ========================================================================
+      ======================================================================== 
+      -->
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="page-header">
+            <h1 id="type">I²C <small>Inter-Integrated Circuit</small></h1>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-lg-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Overview</h3>
+            </div>
+            <div class="panel-body">
+              <p>I²C is a communication protocol similar to SPI. It also operates in a master/slave mode but requires less connections than SPI but isn't capable of reaching the same speeds as SPI. Slaves are addressed via the protocol instead of using external hardware connections.</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Uses</h3>
+            </div>
+            <div class="panel-body">
+              <div class="list-group">
+                <a href="#" class="list-group-item">Sensors</a>
+                <a href="#" class="list-group-item">EEPROM</a>
+                <a href="#" class="list-group-item">External Modules</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h2 class="panel-title">Example</h2>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">Current Temperature<span class="badge pull-right">0x48</span> <h1 id="currentTemp"></h1></div>
+                    <div class="panel-body">
+
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="col-md-8">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">Temperature Graph</div>
+                    <div class="panel-body">
+                    <div id="tempGraph" style="width: 100%; height: 100%; margin: 0 auto"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 
+      ========================================================================
+      ========================================================================
+
+      SERIAL SECTION
+
+      ========================================================================
+      ======================================================================== 
+      -->
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="page-header">
+            <h1 id="type">Serial</h1>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-lg-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Overview</h3>
+            </div>
+            <div class="panel-body">
+              <p>The serial port exposed on the GPIO header of the Raspberry Pi is very similar to the serial port found on the back of old computers. By default in Raspbian it outputs messages during bootup but can also be used to communicate with external modules that use this protocol.</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-6">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Uses</h3>
+            </div>
+            <div class="panel-body">
+              <div class="list-group">
+                <a href="#" class="list-group-item">Output of Boot Sequence</a>
+                <a href="#" class="list-group-item">GPS</a>
+                <a href="#" class="list-group-item">RFID</a>
+                <a href="#" class="list-group-item">Magnetic Card Readers</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h2 class="panel-title">Example</h2>
+            </div>
+            <div class="panel-body">
+              <h2 style="text-align:center;" id="rfidMessage"></h2>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="thumbnail">
+                    <img src="/images/card_tag.png" style="height:185px;" >
+                    <div class="caption">
+                      <h1 style="text-align:center"><span id="tagRFID" class="label label-default">0</span></h1>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="thumbnail">
+                    <img src="/images/button_tag.png" />
+                    <div class="caption">
+                      <h1 style="text-align:center"><span id="buttonRFID" class="label label-default">0</span></h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- End panel body -->
+          </div>
+        </div>
+      </div>
+
+        <!-- <div class="col-lg-12">
+          <div class="page-header">
+            <h1 id="type">SPI</h1>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <div class="page-header">
+            <h1 id="type">I²C</h1>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <div class="page-header">
+            <h1 id="type">Serial</h1>
+          </div>
+        </div> -->
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="javascripts/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="javascripts/bootstrap.min.js"></script>
+
+    <script src="javascripts/highcharts.js"></script>
+    <script src="javascripts/exporting.js"></script>
+
+    <script src="javascripts/app.js"></script>
+    <script src="javascripts/ElementArray.js"></script>
+    <script src="javascripts/SegmentCanvas.js"></script>
+    <script src="javascripts/SevenSegment.js"></script>
+
+    
+
+    <script>
+        var settings = {
+            X : 0,
+            Y : 0,
+            SegmentWidth : 0.12,
+            BevelWidth : 0.31,
+            SegmentInterval : 0.025,
+            SideBevelEnabled : false,
+            Padding : 0,
+            Spacing : 50,
+            FillLight : '#3399f3',
+            FillDark : '#333',
+            StrokeLight : '#ff0000',
+            StrokeDark : '#550000',
+            StrokeWidth : 0,
+            Width: 590,
+            Height: 150
+        };
+
+        window.onload = function () {
+            "use strict";
+            // Set the canvas size to fill its container
+            var canvas = document.getElementById('c');
+            var container = document.getElementById('container1');
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+
+            // Create a new sixteen segment display
+            var segment = new SevenSegment(1, canvas);
+
+            // When the inputs change update the display
+            $("input").keyup(function() { update(segment); });
+            $("input").change(function() { update(segment); });
+
+            // Initialize the segment settings and input controls
+            //settings.Width = canvas.width;
+            //settings.Height = canvas.height;
+            for (var s in settings){ 
+                segment[s] = settings[s];
+            }
+            init(segment);
+            update(segment);
+        }
+
+        // Update the Segment Display settings
+        function update(segment) {
+            "use strict";
+            // Clear the canvas in case the display is resized
+            var canvas = document.getElementById('c');
+            canvas.width = canvas.width;
+
+            // Set the display properties and update the display
+            segment.Width = settings.Width;
+            segment.Height = settings.Height;
+            segment.X = settings.X;
+            segment.Y = settings.Y;
+            segment.SetCount(4);
+            segment.SegmentWidth = settings.SegmentWidth;
+            segment.BevelWidth = settings.BevelWidth;
+            segment.SegmentInterval = settings.SegmentInterval;
+            segment.SideBevelEnabled = settings.SideBevelEnabled;
+            segment.Padding = settings.Padding;
+            segment.Spacing = settings.Spacing;
+            segment.FillLight = settings.FillLight;
+            //segment.FillDark = $("#colorDark").val();
+            segment.FillDark = settings.FillDark;
+            segment.StrokeLight = settings.FillLight;
+            segment.StrokeDark = settings.StrokeDark;
+            segment.StrokeWidth = settings.StrokeWidth;
+            segment.DispayText($("#textInput").val());
+            
+            // Output the display settings
+            var outstring = [];
+            for(var s in settings){
+                var setting = segment[s];
+                var q = (typeof setting == 'string' || setting instanceof String)? "'" : "";
+                outstring.push(s + ' : ' + q + segment[s] + q); 
+            }
+        }
+
+        function init(segment){
+        }
+    </script>
+
+  </body>
+</html>
