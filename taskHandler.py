@@ -82,7 +82,7 @@ class CustomWebSocket(multiprocessing.Process):
                 # ========= RELAY =========
                 elif(task["device"] == "relay"):
                   if not DEBUG:
-                    self.hw.set_led(task["state"])
+                    self.hw.set_relay_state(int(task["id"]), task["state"])
                   else:
                     wsock.send("Setting Relay " + str(task["id"]) + " to " + str(task["state"]))
 

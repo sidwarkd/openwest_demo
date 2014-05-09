@@ -31,6 +31,11 @@ class OpenWestHardware(object):
     # Setup serial port
     self.sp = serial.Serial("/dev/ttyAMA0", baudrate=9600, timeout=0.1)
 
+    # Setup relays
+    GPIO.setup(11, GPIO.OUT)
+    GPIO.setup(13, GPIO.OUT)
+    GPIO.setup(15, GPIO.OUT)
+
 
 
   def get_temp(self):
@@ -97,9 +102,22 @@ class OpenWestHardware(object):
     elif (rfid[0] == chr(3) or rfid[0] == chr(2)):
       return rfid[1:].strip()
 
+  def set_relay_state(self, relay_num, relay_state):
+    if relay_num == 1:
+      GPIO.output(11, relay_state)
+    elif relay_num == 2:
+      GPIO.output(13, relay_state)
+    elif relay_num == 3:
+      GPIO.output(15, relay_state)
+    else:
+      print "Unrecognized relay number"
+
 
   def cleanup(self):
     GPIO.output(12, GPIO.HIGH)
+    GPIO.output(11, GPIO.LOW)
+    GPIO.output(13, GPIO.LOW)
+    GPIO.output(15, GPIO.LOW)
     GPIO.cleanup()
     self.clear_display()
     self.spi.close()
